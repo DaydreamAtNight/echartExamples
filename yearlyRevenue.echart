@@ -1,0 +1,171 @@
+setTimeout(function () {
+  option = {
+    legend: {},
+    tooltip: {
+      trigger: 'axis',
+      showContent: false
+    },
+    dataset: {
+      source: [
+        ['year','2011', '2012', '2013', '2014', '2015', '2016',	'2017',	'2018',	'2019',	'2020',	'2021',	'2022'],
+        ['Admissions', 1337279, 1272000, 1337279, 1393000, 1480304, 1710000, 1970000, 2156000, 2795451.0, 2909275, 751546, 2562915.0],
+        ['Gross Shop Sales', 287000, 287000, 287000,279317, 250000, 250000, 320000, 400000, 515452.0, 564956, 177646, 529924.0],
+        ['Food Services', 25200, 8400, 25200, 24000, 21500, 20000, 23000, 22600, 23875.0, 27310, 10801, 21330.0],
+        ['Facility Rentals', 70400, 114000, 70400, 78000, 89250, 95000, 150000, 160000, 166000.0, 185640, 84250, 145000.0],
+        ['Planetarium', 192300, 200000, 192300, 265000, 294000, 314000, 334000, 382000, 0, 576574, 203657, 484074.0],
+        [ 'Planetarium Show Sales', 145511, 225000, 145511, 88000, 95000, 85000, 100000, 85000, 40000.0, 12000, 11000, 0],
+        ['Other Earned Income', 157600, 138600, 157600, 151080, 41413, 153000, 150000, 151976, 159253.0, 190782, 79888, 164704.0],
+        ['Education Program Fees', 531000, 542800, 531000, 530675, 569475, 440000, 478000, 428866, 645572.0, 796795, 454171, 588242.0],
+        ['Contributed Income', 470000, 473710, 470000, 380000, 500000, 543000, 745000, 550000, 871400.0, 1138277, 1019000, 1116430.0],
+        ['Memberships',554865, 456890, 554865, 565200, 607000, 592000, 620000, 800000, 850288.0, 1100708, 476449, 716773.0],
+        [ 'Fundraisers',77900, 104300, 77900, 122000, 272000, 321000, 270000, 400000, 395000.0, 160000, 59000, 282575.0],
+        [ 'Government',385000, 365000, 385000,  359000, 359000, 414000, 435000, 459700, 417727.0, 433675, 263000, 305000.0]
+    ]
+    },
+    xAxis: { 
+      name: 'year',
+      type: 'category' },
+    yAxis: { 
+      name: 'revenue',
+      gridIndex: 0 },
+    grid: { top: '55%' },
+    series: [
+      {
+        type: 'line',
+        smooth: false,
+        // label: {
+        // show: true,
+        // position: 'bottom'
+        // },
+        stack: 'Total',
+        areaStyle: {},
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: false,
+        stack: 'Total',
+        areaStyle: {},
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: false,
+        stack: 'Total',
+        areaStyle: {},
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: false,
+        stack: 'Total',
+        areaStyle: {},
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: false,
+        stack: 'Total',
+        areaStyle: {},
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: false,
+        stack: 'Total',
+        areaStyle: {},
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: false,
+        stack: 'Total',
+        areaStyle: {},
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: false,
+        stack: 'Total',
+        areaStyle: {},
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: false,
+        stack: 'Total',
+        areaStyle: {},
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: false,
+        stack: 'Total',
+        areaStyle: {},
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: false,
+        stack: 'Total',
+        areaStyle: {},
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: false,
+        stack: 'Total',
+        areaStyle: {},
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'pie',
+        id: 'pie',
+        radius: '30%',
+        center: ['50%', '25%'],
+        emphasis: {
+          focus: 'self'
+        },
+        label: {
+          formatter: '{b}: {@2012} ({d}%)'
+        },
+        encode: {
+          itemName: 'year',
+          value: '2014',
+          tooltip: '2014'
+        }
+      }
+    ]
+  };
+  myChart.on('updateAxisPointer', function (event) {
+    const xAxisInfo = event.axesInfo[0];
+    if (xAxisInfo) {
+      const dimension = xAxisInfo.value + 1;
+      myChart.setOption({
+        series: {
+          id: 'pie',
+          label: {
+            formatter: '{b}: {@[' + dimension + ']} ({d}%)'
+          },
+          encode: {
+            value: dimension,
+            tooltip: dimension
+          }
+        }
+      });
+    }
+  });
+  myChart.setOption(option);
+});
